@@ -126,6 +126,8 @@ const SevenDayW = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+
+
             <ImageBackground source={`${forecast.main.temp - 273.15 < 27 ? require("../assets/img/cold.png") : require("../assets/img/hot.png")}`} style={styles.bgImg}>
                 <View
 
@@ -186,59 +188,7 @@ const SevenDayW = ({ navigation }) => {
 
                     <ScrollView style={{ marginLeft: 15, marginTop: 15, height: 300 }}>
 
-                        {/* <LineChart
-                            data={{
-                                labels: arr,
-                                datasets: [
-                                    {
-                                        data:
-                                            [
 
-
-                                                sevenDay.daily[0].temp.day,
-                                                sevenDay.daily[1].temp.day,
-                                                sevenDay.daily[2].temp.day,
-                                                sevenDay.daily[3].temp.day,
-                                                sevenDay.daily[4].temp.day,
-                                                sevenDay.daily[5].temp.day,
-                                                sevenDay.daily[6].temp.day,
-
-                                            ]
-
-                                    }
-                                ]
-                            }}
-                            width={Dimensions.get("window").width - 30} // from react-native
-                            height={220}
-                            // yAxisLabel="$"
-                            yAxisSuffix="°C"
-                            yAxisInterval={2} // optional, defaults to 1
-                            chartConfig={{
-
-                                backgroundGradientFromOpacity: "#78909c",
-                                backgroundGradientTo: `${forecast.main.temp - 273.15 < 27 ? 'blue' : 'red'}`,
-                                decimalPlaces: 0, // optional, defaults to 2dp
-                                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                                style: {
-                                    borderRadius: 16
-                                },
-                                propsForDots: {
-                                    r: "6",
-                                    strokeWidth: "2",
-                                    stroke: "blue"
-                                }
-                            }}
-                            bezier
-
-                            onDataPointClick={(value, index) => {
-                                console.log("Selected data point:", value, "at index:", index);
-                            }}
-                            style={{
-                                marginVertical: 8,
-                                borderRadius: 16
-                            }}
-                        /> */}
                         <View style={styles.row}>
                             <Text style={styles.cell}>Date</Text>
                             <Text style={styles.cell}>Temp</Text>
@@ -253,7 +203,7 @@ const SevenDayW = ({ navigation }) => {
                             <Image
                                 style={styles.cell2}
                                 source={{
-                                    uri: `https://openweathermap.org/img/w/${sevenDay.daily[0].weather[0].icon}.png`,
+                                    uri: `http://openweathermap.org/img/w/${sevenDay.daily[0].weather[0].icon}.png`,
                                 }}
                             />
                         </View>
@@ -265,7 +215,7 @@ const SevenDayW = ({ navigation }) => {
                             <Image
                                 style={styles.cell2}
                                 source={{
-                                    uri: `https://openweathermap.org/img/w/${sevenDay.daily[1].weather[0].icon}.png`,
+                                    uri: `http://openweathermap.org/img/w/${sevenDay.daily[1].weather[0].icon}.png`,
                                 }}
                             />
                         </View>
@@ -277,7 +227,7 @@ const SevenDayW = ({ navigation }) => {
                             <Image
                                 style={styles.cell2}
                                 source={{
-                                    uri: `https://openweathermap.org/img/w/${sevenDay.daily[1].weather[0].icon}.png`,
+                                    uri: `http://openweathermap.org/img/w/${sevenDay.daily[1].weather[0].icon}.png`,
                                 }}
                             />
                         </View>
@@ -289,7 +239,7 @@ const SevenDayW = ({ navigation }) => {
                             <Image
                                 style={styles.cell2}
                                 source={{
-                                    uri: `https://openweathermap.org/img/w/${sevenDay.daily[3].weather[0].icon}.png`,
+                                    uri: `http://openweathermap.org/img/w/${sevenDay.daily[3].weather[0].icon}.png`,
                                 }}
                             />
                         </View>
@@ -301,7 +251,7 @@ const SevenDayW = ({ navigation }) => {
                             <Image
                                 style={styles.cell2}
                                 source={{
-                                    uri: `https://openweathermap.org/img/w/${sevenDay.daily[4].weather[0].icon}.png`,
+                                    uri: `http://openweathermap.org/img/w/${sevenDay.daily[4].weather[0].icon}.png`,
                                 }}
                             />
                         </View>
@@ -313,7 +263,7 @@ const SevenDayW = ({ navigation }) => {
                             <Image
                                 style={styles.cell2}
                                 source={{
-                                    uri: `https://openweathermap.org/img/w/${sevenDay.daily[5].weather[0].icon}.png`,
+                                    uri: `http://openweathermap.org/img/w/${sevenDay.daily[5].weather[0].icon}.png`,
                                 }}
                             />
                         </View>
@@ -325,7 +275,7 @@ const SevenDayW = ({ navigation }) => {
                             <Image
                                 style={styles.cell2}
                                 source={{
-                                    uri: `https://openweathermap.org/img/w/${sevenDay.daily[6].weather[0].icon}.png`,
+                                    uri: `http://openweathermap.org/img/w/${sevenDay.daily[6].weather[0].icon}.png`,
                                 }}
                             />
                         </View>
@@ -347,6 +297,7 @@ export default SevenDayW
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+
 
 
 

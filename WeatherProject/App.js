@@ -13,7 +13,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/home';
 import 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import Feeding from './src/feeding';
+import Sharing from './src/sharing';
+import ViewFriend from './src/viewFriend';
 const Drawer = createDrawerNavigator();
 
 
@@ -27,7 +29,12 @@ const HomeDrawer = () => {
       <Drawer.Screen name="Todo" component={Todo} />
       <Drawer.Screen name="Planned" component={Planned} />
       <Drawer.Screen name="Remind" component={Remind} />
+      <Drawer.Screen name="Feeding" component={Feeding} />
+      <Drawer.Screen name="Sharing" component={Sharing} />
+      <Drawer.Screen name="ViewFriend" component={ViewFriend} />
       <Drawer.Screen name="Logout" component={Weather} />
+
+
     </Drawer.Navigator>
   );
 }
@@ -44,6 +51,9 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="HomeDrawer" component={HomeDrawer} options={{ headerShown: false }} />
         <Stack.Screen name="Planned" component={Planned} options={{ headerShown: false }} />
+        <Stack.Screen name="Feeding" component={Feeding} options={{ headerShown: false }} />
+        <Stack.Screen name="Sharing" component={Sharing} options={{ headerShown: false }} />
+        <Stack.Screen name="ViewFriend" component={ViewFriend} options={{ headerShown: false }} />
         {/* <Login /> */}
         {/* <Register /> */}
         {/* <Weather /> */}
@@ -52,6 +62,7 @@ export default function App() {
         {/* <Planned /> */}
         {/* <Remind /> */}
         {/* <SevenDayW /> */}
+
       </Stack.Navigator>
     </NavigationContainer>
 

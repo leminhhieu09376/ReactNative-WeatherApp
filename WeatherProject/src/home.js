@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { Formik } from 'formik';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const openWeatherKey = 'd60759a54691e075fabe0fd0a89bc6d0'
 let url = `http://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=minutely&appid=${openWeatherKey}`
 
@@ -20,7 +20,19 @@ const Home = ({ navigation }) => {
     const [humidity, setHumidity] = useState(null)
     const [windSpeed, setWindSpeed] = useState(null)
     const [des, setDes] = useState(null)
+    const [userID, setUserID] = useState(null)
 
+
+
+    // useEffect(() => {
+    //     AsyncStorage.getItem('userID').then((value) => {
+    //         const myObject = JSON.parse(value);
+    //         setUserID(myObject)
+
+    //     })
+    // }, [])
+
+    // console.log(userID)
     const loadForecast = async () => {
 
         //ask for permission to access location
@@ -39,7 +51,7 @@ const Home = ({ navigation }) => {
         setCurrentLocation(lo[0].region)
         setCountry(lo[0].country)
 
-        console.log("lay dc vi tri ok")
+        console.log('okok')
 
 
 

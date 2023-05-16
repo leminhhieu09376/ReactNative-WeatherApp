@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../models/User')
 
+
 // @route POST api/auth/register
 //@desc Register user
 //@access Public
@@ -26,7 +27,7 @@ router.post('/register', async (req, res) => {
         const newUser = new User({ username, password: hashedPassword })
         await newUser.save()
         //return token
-        const accessToken = jwt.sign({ userId: newUser._id }, process.env.ACCESS_TOKEN_SECRET)
+        const accessToken = jwt.sign({ userId: newUser._id, uName: newUser.username }, process.env.ACCESS_TOKEN_SECRET)
         res.json({ success: true, message: 'User created successfully', accessToken })
     } catch (error) {
         console.log(error)
@@ -52,12 +53,15 @@ router.post('/login', async (req, res) => {
         if (!passwordValid) {
             return res.status(400).json({ success: false, message: 'Incorrect  password ' })
         }
-        const accessToken = jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_SECRET)
-        res.json({ success: true, message: 'Logged in successfully', accessToken })
+        const accessToken = jwt.sign({ userId: user._id, uName: user.username }, process.env.ACCESS_TOKEN_SECRET)
+        res.json({ success: true, message: 'Logged in successfully', accessToken, userId: user._id, uName: user.username })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: 'Internal server error' })
     }
 })
+
+
+
 
 module.exports = router

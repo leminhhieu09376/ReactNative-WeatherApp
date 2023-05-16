@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
                     alert('Logged successfully')
                     AsyncStorage.setItem('accessToken', JSON.stringify(data.accessToken))
 
-
+                    AsyncStorage.setItem('userID', JSON.stringify(data.userId))
                     navigation.navigate('HomeDrawer')
 
 
