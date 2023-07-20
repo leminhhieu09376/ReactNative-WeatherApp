@@ -6,7 +6,6 @@ const ImageSchema = new Schema({
 
     name: {
         type: String,
-
     },
     image: {
         data: Buffer,
@@ -28,9 +27,5 @@ const ImageSchema = new Schema({
     base64img: {
         type: String
     }
-
-
-
 })
-
 module.exports = mongoose.model('images', ImageSchema)

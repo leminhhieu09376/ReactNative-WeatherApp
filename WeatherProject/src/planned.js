@@ -26,6 +26,7 @@ const Planned = ({ navigation }) => {
     const [datePicker, setDatePicker] = useState({
         vDate: '',
         Hdate: '',
+        indexx: '',
     })
     const isFocused = useIsFocused();
     const [token, setToken] = useState('')
@@ -98,6 +99,24 @@ const Planned = ({ navigation }) => {
 
 
     }
+    function getDayOfWeek(dateString) {
+        // Tách ngày, tháng và năm từ chuỗi đầu vào
+        var parts = dateString.split("/");
+        var day = parseInt(parts[0], 10);
+        var month = parseInt(parts[1], 10) - 1; // Tháng tính từ 0 (0 - tháng 1, 11 - tháng 12)
+        var year = parseInt(parts[2], 10);
+
+        // Tạo một đối tượng Date từ các phần tử đã tách
+        var date = new Date(year, month, day);
+
+
+
+        // Lấy thứ trong tuần từ đối tượng Date
+        var dayIndex = date.getDay();
+
+        // Trả về tên thứ trong tuần
+        return dayIndex;
+    }
     const handleDateConfirm = (x) => {
         let dt = new Date(x)
         let dts = dt.toISOString().split('T')[0]
@@ -106,13 +125,15 @@ const Planned = ({ navigation }) => {
         let year = dts.split('-')[0]
 
 
-        setDatePicker({ ...datePicker, vDate: day + '/' + month + '/' + year, Hdate: year + '/' + month + '/' + day })
+        setDatePicker({ ...datePicker, vDate: day + '/' + month + '/' + year, Hdate: year + '/' + month + '/' + day, indexx: getDayOfWeek(day + '/' + month + '/' + year) })
 
         hideDatePicker()
     }
+
+
     const Delete = async (id) => {
 
-        fetch(`http://10.0.2.2:5000/api/todos/${id}`, {
+        fetch(`http://192.168.50.106:5000/api/todos/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -128,7 +149,7 @@ const Planned = ({ navigation }) => {
         )
 
 
-        const response = await fetch('http://10.0.2.2:5000/api/todos', {
+        const response = await fetch('http://192.168.50.106:5000/api/todos', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -151,7 +172,7 @@ const Planned = ({ navigation }) => {
 
 
     // }, [])
-
+    console.log(datePicker)
     const modalSubmit = async (id) => {
         // console.log(data2.todos)
         // setEditTodo(data2.find(todo => todo._id === id))
@@ -160,7 +181,7 @@ const Planned = ({ navigation }) => {
         console.log(timeRegex.test(editTodo.time))
         if (timeRegex.test(editTodo.time) == true) {
             setErrMess(null)
-            fetch(`http://10.0.2.2:5000/api/todos/${id}`, {
+            fetch(`http://192.168.50.106:5000/api/todos/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -175,7 +196,7 @@ const Planned = ({ navigation }) => {
                 }
             )
 
-            const response = await fetch('http://10.0.2.2:5000/api/todos', {
+            const response = await fetch('http://192.168.50.106:5000/api/todos', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + token,
@@ -208,13 +229,11 @@ const Planned = ({ navigation }) => {
 
     }, [isFocused])
     console.log('re-render ')
-
+    console.log(data2)
     return (
         <View style={styles.container}>
             <ImageBackground source={require("../assets/img/hot.png")} style={styles.bgImg}>
-                <Entypo onPress={() => {
-                    navigation.openDrawer();
-                }} name='menu' style={{ color: 'black', fontSize: 30, marginTop: 50, marginLeft: -350, marginBottom: 20 }} />
+
                 <DateTimePickerModal
                     isVisible={isDatePickerVisible}
                     mode='date'
@@ -234,25 +253,31 @@ const Planned = ({ navigation }) => {
                     </View>
                     <View style={{ flexDirection: 'row', }}>
                         <TouchableHighlight style={styles.days}>
-                            <Text style={{ color: 'white' }}>Mon</Text>
+                            <Text style={datePicker.indexx === 1 ? { textDecorationLine: 'underline', color: 'white', fontWeight: 'bold' } : { color: 'black' }}>Mon</Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.days}>
-                            <Text style={{ color: 'white' }}>Tue</Text>
+                            <Text style={datePicker.indexx === 2 ? { textDecorationLine: 'underline', color: 'white', fontWeight: 'bold' } : { color: 'black' }}>Tue</Text>
+
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.days}>
-                            <Text style={{ color: 'white' }}>Wed</Text>
+
+                            <Text style={datePicker.indexx === 3 ? { textDecorationLine: 'underline', color: 'white', fontWeight: 'bold' } : { color: 'black' }}>Wed</Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.days}>
-                            <Text style={{ color: 'white' }}>Thu</Text>
+
+                            <Text style={datePicker.indexx === 4 ? { textDecorationLine: 'underline', color: 'white', fontWeight: 'bold' } : { color: 'black' }}>Thu</Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.days}>
-                            <Text style={{ color: 'white' }}>Fri</Text>
+
+                            <Text style={datePicker.indexx === 5 ? { textDecorationLine: 'underline', color: 'white', fontWeight: 'bold' } : { color: 'black' }}>Fri</Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.days}>
-                            <Text style={{ color: 'white' }}>Sat</Text>
+
+                            <Text style={datePicker.indexx === 6 ? { textDecorationLine: 'underline', color: 'white', fontWeight: 'bold' } : { color: 'black' }}>Sat</Text>
                         </TouchableHighlight>
                         <TouchableHighlight style={styles.days}>
-                            <Text style={{ color: 'white' }}>Sun</Text>
+
+                            <Text style={datePicker.indexx === 0 ? { textDecorationLine: 'underline', color: 'white', fontWeight: 'bold' } : { color: 'black' }}>Sun</Text>
                         </TouchableHighlight>
                     </View>
                 </View>
@@ -314,7 +339,7 @@ const Planned = ({ navigation }) => {
                                             <View style={{ flexDirection: 'row', }}>
                                                 <AntDesign name='clockcircleo' style={{ color: 'white', fontSize: 30, marginTop: 18, marginLeft: 16, marginRight: 8 }} />
                                                 <Text style={{ marginLeft: 16, marginTop: 18, fontWeight: 'bold', color: 'white', fontSize: 20, marginRight: 16 }}>{todo.time}</Text>
-                                                <Entypo name='location' style={{ color: 'white', fontSize: 30, marginTop: 18, marginLeft: 10, marginRight: 16 }} />
+                                                <Entypo name='location' style={{ color: 'white', fontSize: 30, marginTop: 18, marginLeft: 5, marginRight: 16 }} />
                                                 <Text style={{ marginTop: 18, fontWeight: 'bold', color: 'white', fontSize: 20 }}>{todo.location} </Text>
                                                 <AntDesign name='delete' style={{ color: 'white', fontSize: 25, position: 'absolute', right: 5, top: 10 }} onPress={() => {
                                                     {
@@ -394,6 +419,11 @@ const styles = StyleSheet.create({
 
 
     },
+    dayss: {
+        margin: 14,
+        textDecorationLine: 'underline'
+
+    },
     headerS: {
 
         padding: 16,
@@ -412,16 +442,18 @@ const styles = StyleSheet.create({
         // borderRadius: 16
         borderTopRightRadius: 16,
         borderTopLeftRadius: 16,
+        marginTop: 32
     },
 
     contents: {
-        height: 500,
+        height: 630,
         backgroundColor: 'black',
         opacity: 0.4,
         width: 390,
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
+
 
 
     },
@@ -478,20 +510,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#78BCAA',
         padding: 10,
         borderRadius: 5,
-        width: 70,
+        width: 90,
         marginRight: 12
     },
     buttonCancle: {
         backgroundColor: '#e88d93',
         padding: 10,
         borderRadius: 5,
-        width: 70,
+        width: 90,
         marginRight: 4
     },
     buttonText: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
+
     },
     label: {
         marginLeft: 12,

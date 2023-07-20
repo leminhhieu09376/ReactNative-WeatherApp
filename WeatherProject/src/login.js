@@ -35,7 +35,7 @@ const Login = ({ navigation }) => {
         }
 
 
-
+        //192.168.50.106
         fetch('http://10.0.2.2:5000/api/auth/login', {
             method: 'POST',
             headers: {

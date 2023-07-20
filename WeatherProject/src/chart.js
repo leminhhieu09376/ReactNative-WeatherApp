@@ -237,7 +237,7 @@ const Chart = ({ navigation }) => {
                                 fontSize: 18, color: 'white', textShadowColor: 'rgba(0, 0, 0, 0.7)',
                                 textShadowOffset: { width: 2, height: 2 },
                                 textShadowRadius: 2,
-                            }} > {city} temperature for next 7 days </Text>
+                            }} > {city} temp for next 7 days </Text>
                         </View>
 
                     </View>
@@ -273,6 +273,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 16,
 
         flex: 1, flexDirection: 'row',
+        margin: 24
 
     },
     current: {

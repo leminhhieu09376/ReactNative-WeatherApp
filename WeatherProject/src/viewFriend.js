@@ -95,7 +95,7 @@ const ViewFriend = ({ navigation }) => {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <View>
                             <Text style={styles.name}>{post.uName}</Text>
-                            <Text style={styles.timestamp}>{post.imgPath}</Text>
+                            <Text style={styles.timestamp}>1 minutes ago</Text>
                         </View>
                         <Ionicons name='ios-ellipsis-horizontal' size={24} color='#73788B' />
                     </View>

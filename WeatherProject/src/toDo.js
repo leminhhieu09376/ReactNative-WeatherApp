@@ -129,7 +129,7 @@ const Todo = ({ navigation }) => {
         <Formik >
             <ImageBackground source={require("../assets/img/hot.png")} style={styles.bgImg}>
                 <View style={styles.container}>
-                    <View style={{ flexDirection: 'row', height: 100, alignItems: 'center', width: 400, marginTop: 40 }}>
+                    <View style={{ flexDirection: 'row', height: 100, alignItems: 'center', width: 400, marginTop: 60, marginBottom: 20 }}>
                         <Entypo onPress={() => {
                             navigation.openDrawer();
                         }} name='menu' style={{ color: 'black', fontSize: 30, marginRight: 40, marginLeft: 20 }} />
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         padding: 10,
-        width: 150,
+        width: 200,
         borderRadius: 10,
         opacity: 0.8
     },

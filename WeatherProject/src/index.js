@@ -108,7 +108,7 @@ const Weather = ({ navigation }) => {
             <ImageBackground source={`${temp < 27 ? require("../assets/img/cold.png") : require("../assets/img/hot.png")}`} style={styles.bgImg}>
                 <ScrollView
 
-                    style={{ marginTop: 50 }}
+                    style={{ marginTop: 80 }}
                 >
 
                     <Formik>
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     input: {
         alignItems: 'center',
         height: 40,
-        width: 300,
+        width: 260,
         margin: 12,
         padding: 10,
         marginLeft: 25,

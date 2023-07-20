@@ -10,24 +10,18 @@ const TodoSchema = new Schema({
     todo: {
         type: String,
         required: true,
-
     },
     location: {
         type: String,
-        required: true,
+
     },
     time: {
         type: String,
         required: true,
     },
-
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
     }
-
-
-
 })
-
 module.exports = mongoose.model('todos', TodoSchema)

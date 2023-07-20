@@ -23,6 +23,7 @@ const Sharing = ({ navigation }) => {
     const [status, setStatus] = useState('')
     const [token, setToken] = useState('')
     const [base64img, setBase64img] = useState(null)
+
     useEffect(() => {
         AsyncStorage.getItem('accessToken').then((value) => {
             const myObject = JSON.parse(value);
@@ -97,7 +98,7 @@ const Sharing = ({ navigation }) => {
     const loadPhotos = async () => {
         const myObject = await AsyncStorage.getItem('accessToken')
         const token = JSON.parse(myObject)
-
+        //10.0.2.2:5000
         const response = await fetch('http://10.0.2.2:5000/upload', {
             method: 'GET',
             headers: {
@@ -125,7 +126,7 @@ const Sharing = ({ navigation }) => {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <View>
                             <Text style={styles.name}>{post.uName}</Text>
-                            <Text style={styles.timestamp}>{post.imgPath}</Text>
+                            <Text style={styles.timestamp}>1 minites ago</Text>
                         </View>
                         <Ionicons name='ios-ellipsis-horizontal' size={24} color='#73788B' />
                     </View>

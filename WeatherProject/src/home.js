@@ -210,13 +210,14 @@ const styles = StyleSheet.create({
     input: {
         alignItems: 'center',
         height: 40,
-        width: 300,
+        width: 270,
         margin: 12,
         padding: 10,
         marginLeft: 20,
         backgroundColor: "rgba(255, 255, 255, 0.4)",
         borderTopLeftRadius: 16,
         borderBottomRightRadius: 16,
+        marginBottom: 32
 
     },
     current: {

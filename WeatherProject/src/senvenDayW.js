@@ -135,8 +135,8 @@ const SevenDayW = ({ navigation }) => {
                 >
                     <Entypo onPress={() => {
                         navigation.openDrawer();
-                    }} name='menu' style={{ color: 'black', fontSize: 30, marginTop: 30, marginLeft: 15 }} />
-                    <View style={{ marginTop: 30 }}>
+                    }} name='menu' style={{ color: 'black', fontSize: 30, marginTop: -30, marginLeft: 15 }} />
+                    <View style={{}}>
 
                         <Text style={{
                             alignItems: 'center', textAlign: 'center', fontSize: 30, color: 'white',
@@ -186,13 +186,13 @@ const SevenDayW = ({ navigation }) => {
 
                     </Formik>
 
-                    <ScrollView style={{ marginLeft: 15, marginTop: 15, height: 300 }}>
+                    <ScrollView style={{ marginLeft: 15, marginTop: 15, height: 380 }}>
 
 
                         <View style={styles.row}>
                             <Text style={styles.cell}>Date</Text>
                             <Text style={styles.cell}>Temp</Text>
-                            <Text style={styles.cell}>Des</Text>
+                            <Text style={styles.cell}>Forecast</Text>
                             <Text style={styles.cell}>Weather</Text>
                         </View>
                         <View style={styles.row}>
@@ -392,9 +392,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontWeight: '600',
-        padding: 16,
+        padding: 8,
         alignContent: 'center',
         justifyContent: 'center',
+
 
     },
     cell2: {
